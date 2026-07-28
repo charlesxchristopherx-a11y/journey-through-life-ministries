@@ -567,6 +567,41 @@ form.card { max-width: 640px; }
 .video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 .video-grid.video-grid-3 { grid-template-columns: repeat(3, 1fr); }
 .video-caption { margin-top: 10px; font-family: var(--font-body); font-weight: 600; color: var(--navy-800); font-size: 0.95rem; text-align: center; }
+
+/* ---------- Video archive cards ---------- */
+.video-archive-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.video-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--gold-100);
+  display: block;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.video-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-gold); }
+.video-card-thumb { position: relative; padding-top: 56.25%; background: var(--navy-900); }
+.video-card-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.video-card-play {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.video-card-play span {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: rgba(16, 29, 48, 0.78);
+  color: var(--gold-200);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+}
+.video-card-body { padding: 18px 20px 20px; }
+.video-card-date {
+  display: inline-block;
+  font-family: var(--font-body); font-weight: 600; font-size: 0.78rem;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--gold-700); margin-bottom: 8px;
+}
+.video-card-title { font-family: var(--font-body); font-weight: 600; color: var(--navy-800); font-size: 1rem; line-height: 1.4; margin: 0; }
 .video-frame {
   position: relative;
   padding-top: 56.25%;
@@ -648,6 +683,7 @@ form.card { max-width: 640px; }
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
   .product-grid { grid-template-columns: repeat(2, 1fr); }
   .video-grid, .video-grid.video-grid-3 { grid-template-columns: 1fr; }
+  .video-archive-grid { grid-template-columns: repeat(2, 1fr); }
   .hero-inner { grid-template-columns: 1fr; }
   .split { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
