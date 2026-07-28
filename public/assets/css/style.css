@@ -551,6 +551,14 @@ form.card { max-width: 640px; }
 }
 .product-card img { border-radius: var(--radius-sm); margin-bottom: 12px; }
 .product-price { font-family: var(--font-display); font-size: 1.25rem; color: var(--gold-700); font-weight: 700; }
+.product-card-footer { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 6px; }
+.product-buy-link {
+  font-family: var(--font-body); font-weight: 700; font-size: 0.85rem;
+  color: var(--navy-700); text-decoration: none;
+  border: 1px solid var(--navy-700); border-radius: var(--radius-pill);
+  padding: 7px 16px; white-space: nowrap;
+}
+.product-buy-link:hover { background: var(--navy-700); color: var(--white); }
 
 /* ---------- Audio / media list ---------- */
 .audio-list { display: flex; flex-direction: column; gap: 14px; }
