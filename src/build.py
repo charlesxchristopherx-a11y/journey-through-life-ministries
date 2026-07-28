@@ -20,6 +20,8 @@ PAGES = [
      "description": "Reset & Restart: Living With Purpose — a 90-day journal and planner for women 40 and up."},
     {"file": "library.html",         "active": "library",  "title": "Library",
      "description": "Audio messages and teaching resources from Rev. Georgetta."},
+    {"file": "videos.html",          "active": "videos",   "title": "Videos",
+     "description": "Watch every video message from Rev. Georgetta's YouTube channel."},
     {"file": "store.html",           "active": "store",    "title": "Store",
      "description": "Journals, workbooks, and coaching resources from Journey Through Life Ministries."},
     {"file": "free-guides.html",     "active": "guides",   "title": "Free Guides",
