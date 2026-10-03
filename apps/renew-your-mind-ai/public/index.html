@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17324a">
+  <meta name="description" content="A KJV-centered reflection tool for examining a difficult thought and moving toward truth, Scripture, declaration, and one small action.">
+  <meta property="og:title" content="Renew Your Mind">
+  <meta property="og:description" content="Examine the thought. Return to truth. Take one faithful step.">
+  <meta property="og:type" content="website">
+  <title>Renew Your Mind | Journey In His Word</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" type="module"></script>
+</head>
+<body>
+  <a class="skip-link" href="#reflection-form">Skip to the reflection</a>
+
+  <div class="page-shell">
+    <header class="hero">
+      <nav class="brand" aria-label="Site identity">
+        <span class="brand-mark" aria-hidden="true"><span></span></span>
+        <span>
+          <strong>Journey In His Word</strong>
+          <small>A guided thought reflection</small>
+        </span>
+      </nav>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Pause · Examine · Renew</p>
+          <h1>Renew Your Mind</h1>
+          <p class="hero-lede">Bring one difficult thought into the light. Receive a personalized reflection grounded in the King James Version of Scripture.</p>
+          <div class="version-pill" aria-label="King James Version only">
+            <span aria-hidden="true">KJV</span>
+            King James Version only
+          </div>
+        </div>
+
+        <blockquote class="hero-quote">
+          <p>“A thought is something I can examine. It is not necessarily the truth.”</p>
+          <footer>A simple place to begin</footer>
+        </blockquote>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="reflection-panel" aria-labelledby="form-title">
+        <div class="panel-heading">
+          <div>
+            <p class="section-number">01 / Begin here</p>
+            <h2 id="form-title">What thought is weighing on you?</h2>
+            <p>Write it the way it sounds in your mind. You do not need perfect words.</p>
+          </div>
+          <span class="private-note"><span aria-hidden="true">◇</span> Not saved by this site</span>
+        </div>
+
+        <form id="reflection-form" novalidate>
+          <div class="field-wrap">
+            <label for="thought">Your thought</label>
+            <textarea id="thought" name="thought" rows="5" maxlength="600" required aria-describedby="thought-help character-count" placeholder="For example: I feel like I’m falling behind and I’ll never catch up."></textarea>
+            <div class="field-meta">
+              <span id="thought-help">One sentence or a short paragraph is enough.</span>
+              <span id="character-count">0 / 600</span>
+            </div>
+          </div>
+
+          <div class="examples" aria-labelledby="examples-title">
+            <div class="examples-heading">
+              <h3 id="examples-title">Or start with a common thought</h3>
+              <p>Selecting one simply places it in the box—you can still change it.</p>
+            </div>
+            <div class="thought-chips" id="thought-examples"></div>
+          </div>
+
+          <div class="submit-row">
+            <button class="primary-button" id="submit-button" type="submit">
+              <span class="button-label">Turn this thought toward truth</span>
+              <span class="button-arrow" aria-hidden="true">→</span>
+            </button>
+            <p class="processing-note">Your words are sent to Cloudflare Workers AI only to prepare this reflection.</p>
+          </div>
+
+          <p class="form-error" id="form-error" role="alert" hidden></p>
+        </form>
+      </section>
+
+      <section class="journey" aria-labelledby="journey-title">
+        <div class="journey-heading">
+          <p class="section-number">02 / The pathway</p>
+          <h2 id="journey-title">From thought to a faithful next step</h2>
+        </div>
+
+        <ol class="progress-track" id="progress-track" aria-label="Reflection progress">
+          <li class="progress-step is-current" data-step="1" aria-current="step">
+            <span class="step-index">1</span>
+            <span><strong>Thought</strong><small>Name what is present</small></span>
+          </li>
+          <li class="progress-step" data-step="2">
+            <span class="step-index">2</span>
+            <span><strong>Truth</strong><small>Examine what it says</small></span>
+          </li>
+          <li class="progress-step" data-step="3">
+            <span class="step-index">3</span>
+            <span><strong>Scripture</strong><small>Return to God’s Word</small></span>
+          </li>
+          <li class="progress-step" data-step="4">
+            <span class="step-index">4</span>
+            <span><strong>Declaration</strong><small>Speak truth personally</small></span>
+          </li>
+          <li class="progress-step" data-step="5">
+            <span class="step-index">5</span>
+            <span><strong>Action</strong><small>Take one small step</small></span>
+          </li>
+        </ol>
+
+        <div class="waiting-state" id="waiting-state">
+          <div class="waiting-symbol" aria-hidden="true">✦</div>
+          <p>Your reflection will unfold here.</p>
+          <span>Thought → Truth → Scripture → Declaration → Action</span>
+        </div>
+
+        <div class="loading-state" id="loading-state" role="status" aria-live="polite" hidden>
+          <div class="loading-orbit" aria-hidden="true"><span></span></div>
+          <div>
+            <strong>Preparing your reflection…</strong>
+            <p>Considering your words and matching them to a verified KJV passage.</p>
+          </div>
+        </div>
+
+        <div class="results" id="results" aria-live="polite" hidden>
+          <aside class="support-alert" id="support-alert" hidden>
+            <div class="support-icon" aria-hidden="true">♥</div>
+            <div>
+              <p class="support-kicker">Please connect with someone now</p>
+              <h3>You deserve immediate human support.</h3>
+              <p id="support-message"></p>
+              <div class="support-links" id="support-links">
+                <a href="tel:988">Call 988</a>
+                <a href="sms:988">Text 988</a>
+                <a href="https://findahelpline.com/" rel="noreferrer">Find help outside the U.S. or Canada</a>
+              </div>
+            </div>
+          </aside>
+
+          <div class="result-card thought-card">
+            <div class="result-label"><span>1</span> Thought</div>
+            <p id="result-thought"></p>
+          </div>
+
+          <div class="result-card truth-card">
+            <div class="result-label"><span>2</span> Truth <small>Personalized by AI</small></div>
+            <p id="result-truth"></p>
+          </div>
+
+          <div class="result-card scripture-card">
+            <div class="result-label"><span>3</span> Scripture <small>Verified KJV text</small></div>
+            <blockquote id="result-scripture"></blockquote>
+            <cite id="result-reference"></cite>
+          </div>
+
+          <div class="result-card declaration-card">
+            <div class="result-label"><span>4</span> Declaration <small>Read it slowly</small></div>
+            <p id="result-declaration"></p>
+          </div>
+
+          <div class="result-card action-card">
+            <div class="result-label"><span>5</span> Action <small>AI-generated, small &amp; safe</small></div>
+            <p id="result-action"></p>
+          </div>
+
+          <aside class="check-in" id="check-in" hidden>
+            <strong>A gentle check-in</strong>
+            <p id="check-in-message"></p>
+            <p>If this connects to thoughts of harming yourself or not wanting to live, call or text <a href="tel:988">988</a> in the U.S. or Canada, or contact local emergency services.</p>
+          </aside>
+
+          <div class="result-actions">
+            <button class="secondary-button" id="copy-button" type="button">Copy reflection</button>
+            <button class="secondary-button" id="share-button" type="button">Share</button>
+            <button class="text-button" id="start-over-button" type="button">Examine another thought</button>
+            <span class="action-status" id="action-status" role="status"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="guardrails" aria-labelledby="guardrails-title">
+        <div>
+          <p class="section-number">03 / Thoughtful boundaries</p>
+          <h2 id="guardrails-title">What “safe actions” means</h2>
+        </div>
+        <div class="guardrail-grid">
+          <article>
+            <span aria-hidden="true">01</span>
+            <h3>Small and doable</h3>
+            <p>A brief prayer, one journal prompt, a calming pause, one practical step, or reaching out to someone trustworthy.</p>
+          </article>
+          <article>
+            <span aria-hidden="true">02</span>
+            <h3>No major decisions</h3>
+            <p>The AI will not tell someone to change treatment, leave a relationship or job, give money, punish themselves, or take a dangerous action.</p>
+          </article>
+          <article>
+            <span aria-hidden="true">03</span>
+            <h3>Human help comes first</h3>
+            <p>Language suggesting self-harm or immediate danger is directed to real-time crisis and emergency support instead of an ordinary exercise.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>Journey In His Word</strong>
+        <p>Pause. Replace. Renew.</p>
+      </div>
+      <p>This tool offers a faith-centered reflection, not medical advice, diagnosis, therapy, or crisis care. Scripture quotations are from the King James Version.</p>
+    </footer>
+  </div>
+
+  <noscript>
+    <div class="noscript">This interactive reflection requires JavaScript. Please enable it and reload the page.</div>
+  </noscript>
+</body>
+</html>

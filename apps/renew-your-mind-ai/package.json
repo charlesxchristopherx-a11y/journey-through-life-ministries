@@ -1,0 +1,18 @@
+{
+  "name": "renew-your-mind-ai",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A KJV-centered AI reflection tool that helps people examine a negative thought and move toward truth, Scripture, declaration, and a safe next action.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "check": "wrangler deploy --dry-run",
+    "types": "wrangler types",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "wrangler": "^4.36.0"
+  }
+}
