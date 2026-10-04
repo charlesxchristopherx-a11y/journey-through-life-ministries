@@ -305,6 +305,17 @@ textarea[aria-invalid="true"] { border-color: var(--rose); }
   font-size: .78rem;
 }
 
+.quick-submit-row {
+  margin-top: 18px;
+}
+
+.quick-submit-row .primary-button {
+  width: 100%;
+  min-height: 60px;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+}
+
 .examples {
   display: grid;
   grid-template-columns: minmax(190px, .32fr) minmax(0, 1fr);

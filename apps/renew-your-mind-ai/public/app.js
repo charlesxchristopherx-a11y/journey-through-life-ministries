@@ -17,8 +17,7 @@ const form = document.querySelector("#reflection-form");
 const thoughtInput = document.querySelector("#thought");
 const characterCount = document.querySelector("#character-count");
 const examples = document.querySelector("#thought-examples");
-const submitButton = document.querySelector("#submit-button");
-const buttonLabel = submitButton.querySelector(".button-label");
+const submitButtons = [...document.querySelectorAll("[data-submit-button]")];
 const errorBox = document.querySelector("#form-error");
 const waitingState = document.querySelector("#waiting-state");
 const loadingState = document.querySelector("#loading-state");
@@ -86,9 +85,17 @@ function stopProgressAnimation() {
   progressTimer = null;
 }
 
+function setSubmitButtons(isLoading) {
+  submitButtons.forEach((button) => {
+    button.disabled = isLoading;
+    button.querySelector(".button-label").textContent = isLoading
+      ? "Preparing your reflection…"
+      : "Turn this thought toward truth";
+  });
+}
+
 function setLoading(isLoading) {
-  submitButton.disabled = isLoading;
-  buttonLabel.textContent = isLoading ? "Preparing your reflection…" : "Turn this thought toward truth";
+  setSubmitButtons(isLoading);
   waitingState.hidden = true;
   results.hidden = true;
   loadingState.hidden = !isLoading;
@@ -235,8 +242,7 @@ form.addEventListener("submit", async (event) => {
   } finally {
     window.clearTimeout(timeout);
     stopProgressAnimation();
-    submitButton.disabled = false;
-    buttonLabel.textContent = "Turn this thought toward truth";
+    setSubmitButtons(false);
   }
 });
 
