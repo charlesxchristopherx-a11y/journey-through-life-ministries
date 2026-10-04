@@ -29,6 +29,8 @@ const supportMessage = document.querySelector("#support-message");
 const supportLinks = document.querySelector("#support-links");
 const checkIn = document.querySelector("#check-in");
 const checkInMessage = document.querySelector("#check-in-message");
+const truthSource = document.querySelector("#truth-source");
+const actionSource = document.querySelector("#action-source");
 const copyButton = document.querySelector("#copy-button");
 const shareButton = document.querySelector("#share-button");
 const startOverButton = document.querySelector("#start-over-button");
@@ -113,6 +115,8 @@ function renderReflection(reflection) {
   setText("#result-action", reflection.action);
 
   const level = reflection.safety?.level || "normal";
+  truthSource.textContent = level === "crisis" ? "Safety response" : "Personalized by AI";
+  actionSource.textContent = level === "crisis" ? "Immediate human support" : "AI-generated, small & safe";
   supportAlert.hidden = level !== "crisis";
   supportLinks.hidden = level !== "crisis";
   checkIn.hidden = level !== "check_in";

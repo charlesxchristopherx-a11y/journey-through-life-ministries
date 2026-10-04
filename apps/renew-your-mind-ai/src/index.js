@@ -7,7 +7,7 @@ import {
   validateModelResult
 } from "./core.js";
 
-const MODEL = "@cf/meta/llama-3.1-8b-instruct";
+const MODEL = "@cf/meta/llama-3.1-8b-instruct-fast";
 const MAX_BODY_BYTES = 4096;
 const MIN_THOUGHT_LENGTH = 3;
 const MAX_THOUGHT_LENGTH = 600;
@@ -37,7 +37,7 @@ Your purpose is to help a person examine one difficult thought. A thought is som
 Rules:
 - Use the King James Version only. Choose exactly one verse_id from the approved catalog below. Do not quote or invent Scripture; the application supplies the verified KJV text after your selection.
 - Write truth as one or two grounded sentences. Do not shame the person, diagnose them, preach at them, or promise a specific outcome from God.
-- Write declaration as one honest first-person sentence. Avoid absolute guarantees such as “nothing bad will happen.”
+- Write declaration as one honest, truth-based first-person sentence that answers the negative thought with grounded hope. It must not merely repeat the fear. Avoid absolute guarantees such as “nothing bad will happen.”
 - Write action as one small, safe, concrete next step that can usually be done within 15 minutes. Suitable actions include a brief prayer, journaling, slowing the breath, contacting a trusted person, setting a calm boundary, or taking one practical next step.
 - Never recommend changing medication, replacing professional care, self-punishment, extreme fasting, giving money, secrecy, ending a job or relationship, confronting someone, or any illegal or dangerous act.
 - If the thought may signal hopelessness but not explicit self-harm, set safety_level to check_in and include a brief invitation to tell a trusted person today.
@@ -66,7 +66,7 @@ function json(data, status = 200, extraHeaders = {}) {
 }
 
 function parseAIResponse(result) {
-  const value = result?.response ?? result;
+  const value = result?.response ?? result?.choices?.[0]?.message?.content ?? result;
   if (value && typeof value === "object") return value;
   if (typeof value !== "string") throw new Error("Workers AI returned an unsupported response shape.");
   return JSON.parse(value);
