@@ -1,3 +1,5 @@
+import { RETURN_DESTINATIONS, resolveReturnSource } from "./return-destinations.js";
+
 const EXAMPLES = [
   "I’m not good enough.",
   "I’m afraid something will go wrong.",
@@ -37,6 +39,26 @@ const actionStatus = document.querySelector("#action-status");
 
 let currentReflection = null;
 let progressTimer = null;
+
+function initializeReturnLinks() {
+  const source = resolveReturnSource(window.location.search, document.referrer);
+  const destination = RETURN_DESTINATIONS[source];
+
+  document.documentElement.dataset.returnSource = source;
+  document.querySelectorAll("[data-return-link]").forEach((link) => {
+    link.href = destination.url;
+    link.setAttribute("aria-label", destination.label);
+  });
+  document.querySelectorAll("[data-return-label]").forEach((label) => {
+    label.textContent = destination.label;
+  });
+  document.querySelectorAll("[data-return-title]").forEach((title) => {
+    title.textContent = destination.title;
+  });
+  document.querySelectorAll("[data-return-message]").forEach((message) => {
+    message.textContent = destination.message;
+  });
+}
 
 function renderExamples() {
   const fragment = document.createDocumentFragment();
@@ -251,5 +273,6 @@ copyButton.addEventListener("click", copyReflection);
 shareButton.addEventListener("click", shareReflection);
 startOverButton.addEventListener("click", reset);
 
+initializeReturnLinks();
 renderExamples();
 updateCount();

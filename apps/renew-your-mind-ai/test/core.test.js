@@ -9,6 +9,7 @@ import {
   publicReflection,
   validateModelResult
 } from "../src/core.js";
+import { RETURN_DESTINATIONS, resolveReturnSource } from "../public/return-destinations.js";
 
 test("normalizes whitespace and control characters", () => {
   assert.equal(normalizeThought("  I\n feel\t overwhelmed.  "), "I feel overwhelmed.");
@@ -44,4 +45,16 @@ test("public reflections always use curated KJV text", () => {
   assert.equal(publicResult.scripture.reference, "Psalm 34:18 (KJV)");
   assert.match(publicResult.scripture.text, /broken heart/);
   assert.equal(publicResult.safety.level, "crisis");
+});
+
+test("uses an explicit source to select the correct return destination", () => {
+  assert.equal(resolveReturnSource("?from=skool"), "skool");
+  assert.equal(resolveReturnSource("?from=website"), "website");
+  assert.equal(RETURN_DESTINATIONS.skool.url, "https://www.skool.com/journey-through-life-min-4188/about");
+  assert.equal(RETURN_DESTINATIONS.website.url, "https://www.journeythroughlifeministries.net/");
+});
+
+test("detects a known referring page and safely defaults unknown sources", () => {
+  assert.equal(resolveReturnSource("", "https://www.skool.com/journey-through-life-min-4188/about"), "skool");
+  assert.equal(resolveReturnSource("?from=https://malicious.example"), "website");
 });
